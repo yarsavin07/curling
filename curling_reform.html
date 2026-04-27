@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Реформа кёрлинга в России — Стратегическое предложение</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap');
+
+  :root {
+    --ice: #e8f4fd;
+    --deep: #0a1628;
+    --blue: #1a5fa8;
+    --blue-light: #2e7fd4;
+    --gold: #c8942a;
+    --gold-light: #e8b84b;
+    --slate: #3d5166;
+    --muted: #6b7e93;
+    --border: rgba(30,80,140,0.12);
+    --bg: #f7fafd;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--bg);
+    color: var(--deep);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0a1628 0%, #1a3a6b 60%, #0f2545 100%);
+    color: white;
+    padding: 80px 40px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 350px; height: 350px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  .hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    border: 1px solid rgba(200,148,42,0.4);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 span { color: var(--gold-light); }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    max-width: 620px;
+    line-height: 1.6;
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-stat-val {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+  .section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 680px;
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+
+  /* MISSION BOX */
+  .mission-box {
+    background: var(--deep);
+    color: white;
+    border-radius: 16px;
+    padding: 40px 44px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .mission-box::before {
+    content: '«';
+    position: absolute;
+    top: -20px; left: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 160px;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+  }
+  .mission-label { font-size: 11px; color: var(--gold-light); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 14px; }
+  .mission-text { font-family: 'Playfair Display', serif; font-size: clamp(18px, 2.5vw, 24px); line-height: 1.45; color: white; position: relative; z-index: 1; }
+  .mission-meta { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.45); position: relative; z-index: 1; }
+
+  /* METRIC GRID */
+  .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 32px; }
+  .metric-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 18px;
+  }
+  .metric-card.accent { background: var(--blue); border-color: var(--blue); }
+  .metric-card.accent .metric-val, .metric-card.accent .metric-lbl, .metric-card.accent .metric-sub { color: white !important; }
+  .metric-card.accent .metric-sub { opacity: 0.6; }
+  .metric-val { font-size: 22px; font-weight: 700; color: var(--deep); line-height: 1; margin-bottom: 6px; }
+  .metric-lbl { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .metric-sub { font-size: 11px; color: rgba(107,126,147,0.7); margin-top: 3px; }
+
+  /* TABLE */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 16px; }
+  .data-table th { text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 12px 16px; background: #f0f5fa; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 11px 16px; border-bottom: 1px solid rgba(30,80,140,0.06); vertical-align: middle; color: var(--deep); }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr.ru td { background: #fffbf0; font-weight: 500; }
+  .data-table tr:hover td { background: #f7fafd; }
+  .data-table tr.ru:hover td { background: #fff5da; }
+
+  /* BAR */
+  .bar-wrap { width: 90px; height: 6px; background: #e8eef5; border-radius: 3px; overflow: hidden; display: inline-block; vertical-align: middle; }
+  .bar-fill { height: 6px; border-radius: 3px; }
+
+  /* TAG */
+  .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
+  .tag-green { background: #e8f5e0; color: #2e6e10; }
+  .tag-blue { background: #e0edf9; color: #1a5fa8; }
+  .tag-amber { background: #fdf0d8; color: #8c5e10; }
+  .tag-red { background: #fdeaea; color: #9b2020; }
+  .tag-gray { background: #eef0f2; color: #5a6472; }
+
+  /* PROBLEM / OPP */
+  .card-list { display: flex; flex-direction: column; gap: 10px; }
+  .problem-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 3px solid #d64545;
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+  }
+  .problem-card .card-title { font-size: 14px; font-weight: 600; color: var(--deep); margin-bottom: 3px; }
+  .problem-card .card-sub { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .opp-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 3px solid #3a9a5c;
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+  }
+  .opp-card .card-title { font-size: 14px; font-weight: 600; color: var(--deep); margin-bottom: 3px; }
+  .opp-card .card-sub { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* DIRECTION CARDS */
+  .dir-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .dir-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 20px;
+    position: relative;
+  }
+  .dir-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--ice);
+    color: var(--blue);
+    font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+  }
+  .dir-card.featured { border-color: var(--blue); }
+  .dir-card.featured .dir-num { background: var(--blue); color: white; }
+  .dir-title { font-size: 14px; font-weight: 700; color: var(--deep); margin-bottom: 6px; line-height: 1.3; }
+  .dir-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+  .dir-badge { margin-top: 10px; }
+
+  /* KPI GRID */
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .kpi-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 16px 14px;
+    border-top: 3px solid var(--blue-light);
+  }
+  .kpi-title { font-size: 12px; font-weight: 700; color: var(--deep); margin-bottom: 8px; line-height: 1.3; }
+  .kpi-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; margin-top: 4px; }
+  .kpi-now { color: var(--muted); }
+  .kpi-target { color: #2e6e10; font-weight: 700; }
+
+  /* BUDGET */
+  .budget-scenarios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+  .scenario { padding: 22px 20px; border-right: 1px solid var(--border); background: white; }
+  .scenario:last-child { border-right: none; }
+  .scenario.featured { background: var(--deep); }
+  .scenario-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--muted); margin-bottom: 8px; }
+  .scenario.featured .scenario-label { color: var(--gold-light); }
+  .scenario-amount { font-size: 22px; font-weight: 800; color: var(--deep); }
+  .scenario.featured .scenario-amount { color: white; }
+  .scenario-desc { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+  .scenario.featured .scenario-desc { color: rgba(255,255,255,0.5); }
+
+  .budget-table { width: 100%; border-collapse: collapse; font-size: 13px; background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 16px; }
+  .budget-table th { text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 10px 16px; background: #f0f5fa; border-bottom: 1px solid var(--border); }
+  .budget-table td { padding: 12px 16px; border-bottom: 1px solid rgba(30,80,140,0.06); vertical-align: top; }
+  .budget-table tr:last-child td { border-bottom: none; }
+  .budget-block { font-weight: 600; color: var(--deep); font-size: 13px; }
+  .budget-amount { font-weight: 700; color: var(--blue); white-space: nowrap; }
+  .budget-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* PHASE */
+  .phase-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: white; }
+  .phase-item { display: flex; gap: 20px; padding: 20px 22px; border-bottom: 1px solid rgba(30,80,140,0.07); align-items: flex-start; }
+  .phase-item:last-child { border-bottom: none; }
+  .phase-marker { width: 10px; height: 10px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+  .phase-period { font-size: 13px; font-weight: 700; color: var(--deep); min-width: 100px; padding-top: 0; }
+  .phase-amount { font-size: 14px; font-weight: 700; color: var(--blue); min-width: 130px; }
+  .phase-desc { font-size: 13px; color: var(--muted); line-height: 1.55; flex: 1; }
+  .phase-desc strong { color: var(--deep); font-weight: 600; }
+
+  /* SOURCES */
+  .source-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+  .source-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .source-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .source-name { font-size: 13px; font-weight: 600; color: var(--deep); flex: 1; }
+  .source-pot { font-size: 11px; font-weight: 700; }
+
+  /* ROADMAP */
+  .roadmap { display: flex; flex-direction: column; gap: 0; }
+  .road-item { display: flex; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .road-item:last-child { border-bottom: none; }
+  .road-period { font-size: 12px; font-weight: 700; color: var(--blue); min-width: 110px; padding-top: 2px; }
+  .road-text { font-size: 14px; color: var(--deep); line-height: 1.5; flex: 1; }
+  .road-kpi { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* FOOTER */
+  .footer {
+    background: var(--deep);
+    color: white;
+    padding: 50px 40px;
+    text-align: center;
+  }
+  .footer-inner { max-width: 680px; margin: 0 auto; }
+  .footer h2 { font-family: 'Playfair Display', serif; font-size: 26px; margin-bottom: 14px; }
+  .footer p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 28px; }
+  .footer-questions { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 24px 28px; text-align: left; }
+  .footer-questions p { color: rgba(255,255,255,0.6); margin-bottom: 0; }
+  .footer-q { display: flex; gap: 10px; margin-top: 12px; font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .footer-q span { color: var(--gold-light); font-weight: 700; }
+  .footer-note { margin-top: 32px; font-size: 12px; color: rgba(255,255,255,0.25); }
+
+  /* SM TABLE */
+  .sm-table { width: 100%; border-collapse: collapse; font-size: 13px; background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+  .sm-table th { text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); padding: 10px 14px; background: #f0f5fa; border-bottom: 1px solid var(--border); }
+  .sm-table td { padding: 10px 14px; border-bottom: 1px solid rgba(30,80,140,0.06); vertical-align: middle; }
+  .sm-table tr:last-child td { border-bottom: none; }
+  .sm-table tr.sep td { border-top: 2px solid var(--border); }
+
+  .note { background: #f0f5fa; border-left: 3px solid var(--blue); border-radius: 0 8px 8px 0; padding: 14px 18px; font-size: 13px; color: var(--slate); line-height: 1.6; margin-top: 14px; }
+  .note.warn { border-left-color: #d64545; background: #fdf5f5; }
+  .note.good { border-left-color: #3a9a5c; background: #f5fdf7; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 50px 24px 50px; }
+    .container { padding: 0 20px; }
+    .section { padding: 44px 0; }
+    .hero-stats { gap: 24px; }
+    .budget-scenarios { grid-template-columns: 1fr; }
+    .scenario { border-right: none; border-bottom: 1px solid var(--border); }
+    .scenario:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Стратегическое предложение · 2026</div>
+    <h1>Реформа<br>кёрлинга в <span>России</span></h1>
+    <p class="hero-sub">От дотационного спорта — к устойчивой клубной экономике. Анализ рынка, стратегия трансформации и бюджет реформы.</p>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-val">×5–7</div>
+        <div class="hero-stat-label">Потенциал роста участников</div>
+      </div>
+      <div>
+        <div class="hero-stat-val">1 млрд ₽</div>
+        <div class="hero-stat-label">Бюджет первой фазы</div>
+      </div>
+      <div>
+        <div class="hero-stat-val">0.008%</div>
+        <div class="hero-stat-label">Проникновение в России сейчас</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MISSION -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">Миссия</div>
+    <div class="section-title">Цель реформы</div>
+    <div class="mission-box">
+      <div class="mission-label">Стратегическая миссия</div>
+      <div class="mission-text">Создать самовоспроизводящуюся систему кёрлинга в России — превратить дотационный спорт в устойчивую клубную экономику с долей частных денег не менее 40%</div>
+      <div class="mission-meta">Горизонт: 5 лет · Три измеримых результата: 8–15K → 30K+ игроков · госденьги → ≥40% private money · 20 → 80+ живых клубов</div>
+    </div>
+    <div class="metric-grid">
+      <div class="metric-card accent">
+        <div class="metric-val">8–15K</div>
+        <div class="metric-lbl">Активных игроков сейчас</div>
+        <div class="metric-sub">~0.008% населения</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">30K+</div>
+        <div class="metric-lbl">Цель через 5 лет</div>
+        <div class="metric-sub">Минимальный ориентир</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">€8.9M</div>
+        <div class="metric-lbl">Бюджет WCF в год</div>
+        <div class="metric-sub">Из них €5.2M от МОК</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">100M ₽</div>
+        <div class="metric-lbl">Бюджет ФКР</div>
+        <div class="metric-sub">&nbsp;</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">35+</div>
+        <div class="metric-lbl">Регионов с федерациями</div>
+        <div class="metric-sub">Живых клубов ~15–20</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WORLD MAP -->
+<div class="section" style="background: white;">
+  <div class="container">
+    <div class="section-label">Мировой контекст</div>
+    <div class="section-title">Россия на мировой карте кёрлинга</div>
+    <div class="section-desc">Участники по странам и доля от населения. Разрыв с лидерами — не в «любви к спорту», а в модели.</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Страна</th>
+          <th>Игроков</th>
+          <th>% нас.</th>
+          <th>Проникновение</th>
+          <th>Модель</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🇨🇦 Канада</td>
+          <td style="font-weight:700">~900K</td>
+          <td style="color:#2e6e10;font-weight:700">2.25%</td>
+          <td><div class="bar-wrap"><div class="bar-fill" style="width:100%;background:#3a9a5c;"></div></div></td>
+          <td><span class="tag tag-green">Нац. культура</span></td>
+        </tr>
+        <tr>
+          <td>🇸🇪 Швеция</td>
+          <td style="font-weight:700">~50K</td>
+          <td style="color:#1a5fa8;font-weight:700">0.48%</td>
+          <td><div class="bar-wrap"><div class="bar-fill" style="width:21%;background:#2e7fd4;"></div></div></td>
+          <td><span class="tag tag-blue">Клубная</span></td>
+        </tr>
+        <tr>
+          <td>🇨🇭 Швейцария</td>
+          <td style="font-weight:700">~42K</td>
+          <td style="color:#1a5fa8;font-weight:700">0.48%</td>
+          <td><div class="bar-wrap"><div class="bar-fill" style="width:21%;background:#2e7fd4;"></div></div></td>
+          <td><span class="tag tag-blue">Клубная</span></td>
+        </tr>
+        <tr>
+          <td>🇳🇴 Норвегия</td>
+          <td style="font-weight:700">~27K</td>
+          <td style="color:#1a5fa8;font-weight:700">0.49%</td>
+          <td><div class="bar-wrap"><div class="bar-fill" style="width:22%;background:#2e7fd4;"></div></div></td>
+          <td><span class="tag tag-blue">Клубная</span></td>
+        </tr>
+        <tr>
+          <td>🇺🇸 США</td>
+          <td style="font-weight:700">~200K</td>
+          <td style="color:#8c5e10;font-weight:700">0.060%</td>
+          <td><div class="bar-wrap"><div class="bar-fill" style="width:3%;background:#c8942a;"></div></div></td>
+          <td><span class="tag tag-amber">Корп./premium</span></td>
+        </tr>
+        <tr>
+          <td>🇯🇵 Япония</td>
+          <td style="font-weight:700">~30K</td>
+          <td style="color:#8c5e10;font-weight:700">0.024%</td>
+          <td><div class="bar-wrap"><div class="bar-fill" style="width:1%;background:#c8942a;"></div></div></td>
+          <td><span class="tag tag-gray">Гос. + клуб</span></td>
+        </tr>
+        <tr class="ru">
+          <td>🇷🇺 <strong>Россия</strong></td>
+          <td style="font-weight:700">~11K</td>
+          <td style="color:#9b2020;font-weight:700">0.008%</td>
+          <td><div class="bar-wrap"><div class="bar-fill" style="width:0.4%;background:#d64545;"></div></div></td>
+          <td><span class="tag tag-red">Гос. модель</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">Если Россия достигнет проникновения Швеции (0.48%) — это 700K игроков. Даже скромная цель 0.05% — уже 73K, рост в 5–7 раз. Разрыв не в менталитете — в отсутствии клубной модели.</div>
+  </div>
+</div>
+
+<!-- SWEDEN LESSON -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">Эталон для сравнения</div>
+    <div class="section-title">Урок Швеции: почему у них работает</div>
+    <div class="section-desc">Швеция не стала лидером потому, что «любит кёрлинг». Она построила правильную систему в 1977 году и за 50 лет вырастила из неё элиту.</div>
+    <table class="data-table">
+      <thead><tr><th>Параметр</th><th>Швеция</th><th>Россия (сейчас)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Базовая модель</td>
+          <td><span class="tag tag-green">Клуб → семья → федерация</span></td>
+          <td><span class="tag tag-amber">Государство → федерация → секция</span></td>
+        </tr>
+        <tr>
+          <td>Финансирование клуба</td>
+          <td>Членские взносы + корп. события + F&B: €380–760K/год</td>
+          <td>Региональные бюджеты, точечные взносы</td>
+        </tr>
+        <tr>
+          <td>Членский взнос</td>
+          <td>€250–600/год (взрослый)</td>
+          <td>Практически отсутствует как система</td>
+        </tr>
+        <tr>
+          <td>Корп. мероприятие</td>
+          <td>€1,400–7,500+ за событие</td>
+          <td>Единицы событий, не системно</td>
+        </tr>
+        <tr>
+          <td>Переломный момент</td>
+          <td>1977: ЧМ в Карлстаде — ТВ, победа, король → массовый приток молодёжи</td>
+          <td>Системного медиа-триггера не было</td>
+        </tr>
+        <tr>
+          <td>Путь к элите</td>
+          <td>Клубная база → элита (Team Edin из Karlstads CC)</td>
+          <td>Сборная оторвана от массового спорта</td>
+        </tr>
+        <tr>
+          <td>Цифровой образ</td>
+          <td>Современные сайты с CTA «попробуй кёрлинг»</td>
+          <td>Устаревшая подача, контент для «своих», нет точки входа</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PROBLEMS -->
+<div class="section" style="background: white;">
+  <div class="container">
+    <div class="section-label">Диагноз</div>
+    <div class="section-title">Ключевые проблемы кёрлинга в России</div>
+    <div class="section-desc">Шесть системных барьеров, которые блокируют рост. Каждая решаема — если есть мандат на реформу.</div>
+    <div class="card-list">
+      <div class="problem-card">
+        <div class="card-title">Нет клубной культуры — есть только секции и федерация</div>
+        <div class="card-sub">Спорт без community = нет retention, нет органического роста, нет денег. Люди не «принадлежат» клубу — они просто ходят на тренировки.</div>
+      </div>
+      <div class="problem-card">
+        <div class="card-title">Финансирование от государства, а не от участников</div>
+        <div class="card-sub">Хрупкая модель: меняются приоритеты Минспорта — всё рушится. Нет рыночного сигнала, нет стимула делать продукт лучше.</div>
+      </div>
+      <div class="problem-card">
+        <div class="card-title">Международная изоляция снижает мотивацию элиты</div>
+        <div class="card-sub">Олимпийский аргумент ослаблен — а это главный бюджетный триггер для Минспорта. Временный фактор, но давит на систему прямо сейчас.</div>
+      </div>
+      <div class="problem-card">
+        <div class="card-title">Слабый B2B и корпоративный продукт</div>
+        <div class="card-sub">Кёрлинг не упакован как premium тимбилдинг и нетворкинг — а там самый быстрый путь к коммерческим деньгам без госсубсидий.</div>
+      </div>
+      <div class="problem-card">
+        <div class="card-title">Студенческая лига есть, но не работает как медиа-продукт</div>
+        <div class="card-sub">Есть соревнования, нет нарратива: персонажей, интриги, смотрибельного формата. Это протокол результатов, а не продукт.</div>
+      </div>
+      <div class="problem-card">
+        <div class="card-title">Цифровой образ не привлекает новую аудиторию</div>
+        <div class="card-sub">Сайты и соцсети морально устарели, визуально не работают на привлечение. Контент для «своих», нет объяснительной точки входа для незнакомца. ФКР в Telegram — 3,600 подписчиков. Московский КК в ВК — 420.</div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:20px;">Для сравнения: средний районный ресторан в Москве — 5–15K подписчиков. Niklas Edin, 8-кратный чемпион мира — 18K в Instagram. Кёрлинг — офлайн-спорт, но цифровой образ должен работать как точка входа.</div>
+  </div>
+</div>
+
+<!-- STRATEGY -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">Стратегия</div>
+    <div class="section-title">7 направлений реформы</div>
+    <div class="section-desc">Системный подход: сначала создать спрос и клубную экономику, потом строить инфраструктуру — не наоборот.</div>
+    <div class="dir-grid">
+      <div class="dir-card featured">
+        <div class="dir-num">1</div>
+        <div class="dir-title">Club First Reform</div>
+        <div class="dir-desc">Аудит всех регионов и клубов (живые / мёртвые), единый клубный стандарт, субсидии на запуск, обучение управленцев и тренеров</div>
+        <div class="dir-badge"><span class="tag tag-red">Фундамент</span></div>
+      </div>
+      <div class="dir-card featured">
+        <div class="dir-num">2</div>
+        <div class="dir-title">Corporate Curling League</div>
+        <div class="dir-desc">Продукт для банкиров, юристов, нефтегаза, госкомпаний. Федеральная деловая лига с B2B sales team, premium tournaments, sponsorship packaging</div>
+        <div class="dir-badge"><span class="tag tag-green">Revenue engine</span></div>
+      </div>
+      <div class="dir-card">
+        <div class="dir-num">3</div>
+        <div class="dir-title">Student Curling System</div>
+        <div class="dir-desc">50+ вузов, региональные этапы, федеральный финал, медиа-упаковка лиги с персонажами. Самый дешёвый рост и лучший HR pipeline</div>
+        <div class="dir-badge"><span class="tag tag-blue">Самый дешёвый рост</span></div>
+      </div>
+      <div class="dir-card">
+        <div class="dir-num">4</div>
+        <div class="dir-title">Premium Flagship Club</div>
+        <div class="dir-desc">Один эталонный клуб в Москве или Петербурге. Не дворец спорта — premium club. Умнее трансформировать существующую площадку.</div>
+        <div class="dir-badge"><span class="tag tag-amber">Символ новой модели</span></div>
+      </div>
+      <div class="dir-card">
+        <div class="dir-num">5</div>
+        <div class="dir-title">Commercial Committee</div>
+        <div class="dir-desc">Отдельный коммерческий блок: sponsorship, naming rights, partnerships, media rights, premium events. Федерации без коммерческого блока не выживают.</div>
+        <div class="dir-badge"><span class="tag tag-green">Must-have</span></div>
+      </div>
+      <div class="dir-card">
+        <div class="dir-num">6</div>
+        <div class="dir-title">Governance Reform</div>
+        <div class="dir-desc">Убрать чиновничью модель управления, построить business federation. Правильная роль руководителя — CEO с полномочиями, а не президент-чиновник.</div>
+        <div class="dir-badge"><span class="tag tag-gray">Системное</span></div>
+      </div>
+      <div class="dir-card">
+        <div class="dir-num">7</div>
+        <div class="dir-title">Olympic + Paralympic</div>
+        <div class="dir-desc">Паралимпийский кёрлинг — сильный государственный аргумент и отдельный источник финансирования. Ключ к бюджетам Минспорта.</div>
+        <div class="dir-badge"><span class="tag tag-gray">Гос. must-have</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KPI -->
+<div class="section" style="background: white;">
+  <div class="container">
+    <div class="section-label">Измеримые результаты</div>
+    <div class="section-title">7 ключевых KPI реформы</div>
+    <div class="section-desc">Только цифры. Никаких «развиваем спорт».</div>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-title">Active Paying Members</div>
+        <div class="kpi-row"><span class="kpi-now">Сейчас: ~10K</span><span class="kpi-target">Цель: 30K+</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Живых клубов с экономикой</div>
+        <div class="kpi-row"><span class="kpi-now">Сейчас: ~20</span><span class="kpi-target">Цель: 80+</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Корп. событий в год</div>
+        <div class="kpi-row"><span class="kpi-now">Сейчас: единицы</span><span class="kpi-target">Цель: 300–500</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">University Curling</div>
+        <div class="kpi-row"><span class="kpi-now">Есть, без медиа</span><span class="kpi-target">50+ вузов, смотрибельно</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Junior Pipeline</div>
+        <div class="kpi-row"><span class="kpi-now">Узкий поток</span><span class="kpi-target">×3 детей в системе</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Коммерческий доход</div>
+        <div class="kpi-row"><span class="kpi-now">&lt;100M ₽</span><span class="kpi-target">1–2B ₽/год</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-title">Доля частных денег</div>
+        <div class="kpi-row"><span class="kpi-now">&lt;10%</span><span class="kpi-target">≥40%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BUDGET -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">Финансовая модель</div>
+    <div class="section-title">Бюджет реформы</div>
+    <div class="section-desc">Важно разделять: операционный бюджет федерации (150–500M ₽/год — поддерживает текущую жизнь) и development budget — отдельные инвестиции в трансформацию системы.</div>
+    <div class="budget-scenarios">
+      <div class="scenario">
+        <div class="scenario-label">Conservative</div>
+        <div class="scenario-amount">1 млрд ₽</div>
+        <div class="scenario-desc">Минимально рабочий сценарий</div>
+      </div>
+      <div class="scenario featured">
+        <div class="scenario-label">Strong Model ✓ Рекомендуется</div>
+        <div class="scenario-amount">2 млрд ₽</div>
+        <div class="scenario-desc">Правильная модель с запасом на масштабирование</div>
+      </div>
+      <div class="scenario">
+        <div class="scenario-label">Aggressive</div>
+        <div class="scenario-amount">3+ млрд ₽</div>
+        <div class="scenario-desc">Федеральная система с нуля</div>
+      </div>
+    </div>
+    <table class="budget-table">
+      <thead><tr><th>Направление</th><th>Бюджет</th><th>Что входит</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="budget-block">Club First Reform</div></td>
+          <td><div class="budget-amount">250–400M ₽</div></td>
+          <td><div class="budget-desc">Аудит регионов, клубная акселерация, субсидии на запуск, методология, обучение управленцев, тренеры, сертификация</div></td>
+        </tr>
+        <tr>
+          <td><div class="budget-block">Premium Flagship Club</div></td>
+          <td><div class="budget-amount">300–700M ₽</div></td>
+          <td><div class="budget-desc">Один эталонный клуб. Трансформация существующей площадки — намного умнее, чем строить с нуля</div></td>
+        </tr>
+        <tr>
+          <td><div class="budget-block">University Curling League</div></td>
+          <td><div class="budget-amount">150–250M ₽</div></td>
+          <td><div class="budget-desc">50+ вузов, региональные этапы, федеральный финал, бренд, медиа-упаковка, sponsorship package</div></td>
+        </tr>
+        <tr>
+          <td><div class="budget-block">Junior Pipeline</div></td>
+          <td><div class="budget-amount">150–300M ₽</div></td>
+          <td><div class="budget-desc">Детские школы, junior circuits, тренеры, соревнования, системная воронка — без этого спорта через 10 лет не будет</div></td>
+        </tr>
+        <tr>
+          <td><div class="budget-block">Corporate Curling League</div></td>
+          <td><div class="budget-amount">100–150M ₽</div></td>
+          <td><div class="budget-desc">Запуск продукта, event product, B2B sales team, sponsorship packaging. Самоокупается уже на фазе 1.</div></td>
+        </tr>
+        <tr>
+          <td><div class="budget-block">Media + PR + Brand</div></td>
+          <td><div class="budget-amount">100–150M ₽</div></td>
+          <td><div class="budget-desc">Не Instagram. Продукт, ТВ, digital, федеральная visibility, объяснительный контент для широкой аудитории</div></td>
+        </tr>
+        <tr>
+          <td><div class="budget-block">Commercial Committee</div></td>
+          <td><div class="budget-amount">50–100M ₽</div></td>
+          <td><div class="budget-desc">Коммерческий департамент: sponsorship sales, naming rights, partnerships, media rights</div></td>
+        </tr>
+        <tr>
+          <td><div class="budget-block">Olympic / Paralympic</div></td>
+          <td><div class="budget-amount">100–300M ₽</div></td>
+          <td><div class="budget-desc">Дополнительно к основным госденьгам. Элитная подготовка, паралимпийская программа</div></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">Для сравнения: один топ трансфер игрока ведущих клубов РПЛ может стоить столько же, сколько весь development budget кёрлинга на 5 лет. Это не большие деньги по меркам спорта.</div>
+  </div>
+</div>
+
+<!-- PHASES -->
+<div class="section">
+  <div class="container">
+    <div class="section-label">Реализация</div>
+    <div class="section-title">Фазовый подход</div>
+    <div class="section-desc">Поэтапный подход снижает риски и позволяет подтвердить модель до следующего финансового решения.</div>
+    <div class="phase-list">
+      <div class="phase-item">
+        <div class="phase-marker" style="background:#2e7fd4;"></div>
+        <div class="phase-period">Фаза 1<br><span style="font-weight:400;color:var(--muted);font-size:12px;">12 месяцев</span></div>
+        <div class="phase-amount">150–250M ₽</div>
+        <div class="phase-desc"><strong>Доказать модель.</strong> Corporate league пилот, university system, flagship concept, commercial engine, клубный аудит. Цель: показать, что деньги возвращаются и модель работает.</div>
+      </div>
+      <div class="phase-item">
+        <div class="phase-marker" style="background:#3a9a5c;"></div>
+        <div class="phase-period">Фаза 2<br><span style="font-weight:400;color:var(--muted);font-size:12px;">Год 2–3</span></div>
+        <div class="phase-amount">500M–1B ₽</div>
+        <div class="phase-desc"><strong>Масштабирование.</strong> Тиражирование клубной модели в 15+ городов, партнёрства с регионами и вузами, спонсорские пакеты на уровне лиги.</div>
+      </div>
+      <div class="phase-item">
+        <div class="phase-marker" style="background:#c8942a;"></div>
+        <div class="phase-period">Фаза 3<br><span style="font-weight:400;color:var(--muted);font-size:12px;">Год 4–5+</span></div>
+        <div class="phase-amount">Самоокупаемость</div>
+        <div class="phase-desc"><strong>Федеральная система.</strong> Клубная сеть генерирует собственный cashflow. Корп. лига покрывает операционку. Государство финансирует только элиту и инфраструктуру.</div>
+      </div>
+    </div>
+    <div class="note warn" style="margin-top:16px;">Правильный порядок: спрос → клуб → экономика → потом инфраструктура. Запрос на мандат на реформу.</div>
+  </div>
+</div>
+
+<!-- ROADMAP -->
+<div class="section" style="background: white;">
+  <div class="container">
+    <div class="section-label">Дорожная карта</div>
+    <div class="section-title">Конкретные шаги и KPI</div>
+    <div class="section-desc">Что происходит на каждом этапе и как это измеряется.</div>
+    <div class="roadmap">
+      <div class="road-item">
+        <div class="road-period">Месяц 1–2</div>
+        <div><div class="road-text">Аудит: сколько платящих участников, корп. клиентов, реальный P&L клубов и федерации по регионам</div><div class="road-kpi">KPI: понять точку старта — без этого невозможно планировать</div></div>
+      </div>
+      <div class="road-item">
+        <div class="road-period">Месяц 2–4</div>
+        <div><div class="road-text">Новый сайт и соцсети: фокус на «попробуй кёрлинг» и «закажи корпоратив». Объяснительный контент.</div><div class="road-kpi">KPI: 10+ заявок на Learn to Curl в месяц на площадку</div></div>
+      </div>
+      <div class="road-item">
+        <div class="road-period">Месяц 3–6</div>
+        <div><div class="road-text">Пилот Corporate League: продать 6–10 команд в Москве или Петербурге на сезон. Сезон = финал + трофей.</div><div class="road-kpi">KPI: 3–5M ₽ выручки с первого сезона, NPS &gt; 70</div></div>
+      </div>
+      <div class="road-item">
+        <div class="road-period">Месяц 4–8</div>
+        <div><div class="road-text">Медиа-упаковка студенческой лиги: персонажи, комментаторы, видео, мемы, соцсети команд</div><div class="road-kpi">KPI: 10K+ просмотров финала, рост подписчиков ×5</div></div>
+      </div>
+      <div class="road-item">
+        <div class="road-period">Год 1–2</div>
+        <div><div class="road-text">2–3 пилотных клуба в premium-формате; разработать тиражируемый клубный стандарт</div><div class="road-kpi">KPI: 200+ платящих членов на клуб, окупаемость в горизонте 3 лет</div></div>
+      </div>
+      <div class="road-item">
+        <div class="road-period">Год 2–3</div>
+        <div><div class="road-text">Масштабирование в регионы через клубный стандарт + партнёрства с местными игроками и структурами</div><div class="road-kpi">KPI: 15+ городов, 500+ корп. событий/год по стране</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-inner">
+    <h2>Реформа кёрлинга в России</h2>
+    <p>Стратегическое предложение по развитию Федерации кёрлинга России — от дотационного спорта к устойчивой клубной экономике.</p>
+    <div class="footer-note">Стратегическое предложение · 2026</div>
+  </div>
+</div>
+
+</body>
+</html>
